@@ -10,11 +10,11 @@ class SignUpView(View):
   def post(self, request):
     data = json.loads(request.body)
 
-    login_id = data['login_id']
-    password = data['password']
-    name     = data.get('name')
-
     try:
+      login_id = data['login_id']
+      password = data['password']
+      name     = data.get('name')
+
       if User.objects.filter(login_id = login_id).exists():
         return JsonResponse({'message' : 'LOGIN_ID_ALREADY_EXISTS'}, status = 400)
 
@@ -40,11 +40,8 @@ class SignInView(View):
       login_id = data['login_id']
       password = data['password']
 
-      if not (login_id and password):
-        return JsonResponse({'message' : 'EMPTY_VALUE'}, status = 400)
-
       if not User.objects.filter(login_id = login_id).exists():
-        return JsonResponse({'message' : 'INVALID_EMAIL'}, status = 401)
+        return JsonResponse({'message' : 'INVALID_LOGIN_ID'}, status = 401)
 
       user = User.objects.get(login_id = login_id)
 
@@ -56,6 +53,3 @@ class SignInView(View):
 
     except KeyError:
       return JsonResponse({'message' : 'KEY_ERROR'}, status = 400)
-
-    except ValueError:
-      return JsonResponse({'message' : 'VALUE_ERROR'}, status = 400)
