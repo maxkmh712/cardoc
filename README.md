@@ -111,7 +111,7 @@
 
 # 5. Postman API 테스트
 
-### API 테스트 : 
+### API 테스트 : https://www.postman.com/cloudy-robot-203980/workspace/cardoc/collection/17666851-398473aa-1fe3-49c2-8a44-d18421cabfd8
 
 ### API 명세서 : https://documenter.getpostman.com/view/17666851/UVJbGwv8
 
